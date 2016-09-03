@@ -6,7 +6,7 @@ parameters:
     database_port:     3306
     database_name:     mediazmj_MediaBayProd
     database_user:     mediazmj
-    database_password: '3+f9mJ5#1n0q'
+    database_password: 3+f9mJ5#1n0q
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
