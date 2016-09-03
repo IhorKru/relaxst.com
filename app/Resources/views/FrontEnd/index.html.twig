@@ -1,0 +1,577 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <header role="banner" id="fh5co-header">
+            <div class="fluid-container">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <!-- Mobile Toggle Menu Button -->
+                        <a href="{{ path('index') }}" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                        <a class="navbar-brand" href="{{ path('index') }}">Twist</a> 
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="{{ path('index') }}" data-nav-section="home"><span>Home</span></a></li>
+                            <li><a href="{{ path('index') }}" data-nav-section="services"><span>Services</span></a></li>
+                            <li><a href="{{ path('index') }}" data-nav-section="explore"><span>Project</span></a></li>
+                            <li><a href="{{ path('index') }}" data-nav-section="testimony"><span>Testimony</span></a></li>
+                            <li><a class="external" href="{{ path('terms') }}" data-nav-section="fh5co-home"><span>Terms of Use</span></a></li>
+                            <li><a class="external" href="{{ path('privacy') }}" data-nav-section="fh5co-home"><span>Privacy Policy</span></a></li>
+                            <li><a href="{{ path('index') }}" data-nav-section="faq"><span>FAQ</span></a></li>
+                            <li><a class="external" href="{{ path('unsubscribe') }}"><span>Unsubscribe</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+    </header>
+    <section id="fh5co-home" class="imageonet" data-section="home" data-stellar-background-ratio="0.5">
+        <div class="gradient"></div>
+        <div class="container">
+            <div class="text-wrap">
+                <div class="text-inner">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <h1 class="to-animate" style="font-size: 1.5em;">Join the world of intertainment <br> Right Now</h1>
+                            {{ form_start(form1, {'attr': {'novalidate': 'novalidate'}}) }}
+                 
+                                 <div class="input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 text-center margin-f">
+                                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                                    {{ form_label(form1.firstname) }}
+                                    {{ form_widget(form1.firstname) }}
+                                </div>
+                                <div class="input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 text-center margin-f">
+                                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                                    {{ form_label(form1.lastname) }}
+                                    {{ form_widget(form1.lastname) }}
+                                </div>
+                                <div class="input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 text-center margin-f">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                                    {{ form_label(form1.emailaddress) }}
+                                    {{ form_widget(form1.emailaddress) }}
+                                </div>
+                                <div class="input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 text-center margin-f">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+                                    {{ form_label(form1.phone) }}
+                                    {{ form_widget(form1.phone) }}
+                                </div>
+                                <div class="input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 text-center margin-f">
+                                    <span class="input-group-addon"><i class="fa fa-male fa-fw"></i></span>
+                                    {{ form_label(form1.age) }}
+                                    {{ form_widget(form1.age) }}
+                                </div>
+
+                                <div class="picklist-style">
+                                    <div class="checkbox input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+
+                                        {% for field in form1.optindetails %}
+                                            {{ form_widget(field.agreeterms) }}
+                                            <lable> {{ 'I have read and agreed to ' }} <a href="{{ path('terms') }}" target="_blank"> {{ 'Terms & Conditions' }} </a> </lable>
+                                            {{ form_row(field.agreeterms) }}
+                                        {% endfor %}   
+
+                                    </div>
+                                    <div class="checkbox input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                                        {% for field in form1.optindetails %}
+                                            {{ form_widget(field.agreeemails) }}
+                                            <lable> {{ 'I want to get emails from Relaxst.com' }} </lable>
+                                            {{ form_row(field.agreeemails) }}
+                                        {% endfor %}  
+                                    </div>
+                                    <div class="checkbox input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                                        {% for field in form1.optindetails %}
+                                            {{ form_widget(field.agreepartners) }}
+                                            <lable> {{ 'I want to get mails from partners of Relaxst.com' }} </lable>
+                                            {{ form_row(field.agreepartners) }}
+                                        {% endfor %}  
+                                    </div>
+                                </div>
+                                <div class="call-to-action">
+                                    {{ form_row(form1.submit, { 'label': 'Subscribe to join' }) }}
+                                </div>
+                                
+                            {{ form_end(form1) }}
+                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="window-BG" id="alert">
+            <div class="window">
+                <div id="alert-title" class="win-img-text">{{ 'Please solve below errors'|trans }}:</div>
+                <div id="alert-text" class="win-text">
+                    <div style="color: white; text-align: justify;">
+                        {{ form_errors(form1) }}
+                        {{ form_errors(form1.optindetails) }}
+                        {% for field in form1.optindetails %}
+                            {{ form_errors(field.agreepartners) }}
+                        {% endfor %}  
+                    </div>    
+                </div>
+                <div class="window-close win-close-2">{{ 'Close'|trans }}</div>
+            </div>
+        </div> 
+    </section>
+
+    <section id="fh5co-services" data-section="services">
+        <div class="fh5co-services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate"><span>Services we offer</span></h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext">
+                                <h3 class="to-animate">Relaxst.com is a subscription based entertainment network, dedicated to sharing best entertainment contant to it's subscribers, including latest news, mobile apps and much more </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-chemistry"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Newest in gaming</h3>
+                                <p>Get the latest news and deals within the gaming industry to be the first one to know about new releases and exclusive staff.</p>
+                            </div>
+                        </div>
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-energy"></i></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Mobile Apps</h3>
+                                <p>Did you know that there are tones of cool apps that never got to Android store. Be the one to get exclusive insight to those.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-trophy"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Computer Games</h3>
+                                <p>If computer games is something you have always loved, join us to get exclusive access to all you will ever need.</p>
+                            </div>
+                        </div>
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-paper-plane"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Latest of Music Industry</h3>
+                                <p>Get notified of latest tunes from your favourite artists though our email campaigsn. Join the world of entertainment now.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-people"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Entertainment News</h3>
+                                <p>Relaxst.com will help you to always be on top of what is happening in the entertainment industry on daily bases so you will never miss a thing.</p>
+                            </div>
+                        </div>
+
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-screen-desktop"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Across all devices</h3>
+                                <p>Relaxst.com gets you covered no matter which device you are using. Always get what you want where you want it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-life-saver"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>24/7 Help &amp; Support</h3>
+                                <p>You can unsubscribe anytime. You data remains fully safe with us. But if you would ever want to join back - do and get a bonus for it if you qualify.</p>
+                            </div>
+                        </div>
+                        <div class="box-services">
+                            <div class="icon to-animate">
+                                <span><i class="icon-key"></i></span>
+                            </div>
+                            <div class="fh5co-post to-animate">
+                                <h3>Enjoy your time</h3>
+                                <p>All we do is turning arround providing our subscribers with the best possible contant so all they have to do is to enjoy it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="core-features">
+            <div class="grid2 to-animate imagefive"></div>
+            <div class="grid2 fh5co-bg-color">
+                <div class="core-f">
+                <h2 class="to-animate">Core Features</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="core">
+                                <i class="icon-cloud-download to-animate-2"></i>
+                                <div class="fh5co-post to-animate">
+                                    <h3>Coolest contant</h3>
+                                    <p>Relaxst.com provides exclusive contant to its subscribers via high value email campaigns on regular basis.</p>
+                                </div>
+                            </div>
+                            <div class="core">
+                                <i class="icon-laptop to-animate-2"></i>
+                                <div class="fh5co-post to-animate">
+                                    <h3>No commitment</h3>
+                                    <p>You are free to join the club as well as leave it whenever you want. No commitment, no fees or hidden charges for that.</p>
+                                </div>
+                            </div>
+                            <div class="core">
+                                <i class="icon-hand-paper-o to-animate-2"></i>
+                                <div class="fh5co-post to-animate">
+                                    <h3>24/7 Help &amp; Support</h3>
+                                    <p>Relaxst.com team is open to its subscribers and is ready to answer any questions you might have. Just drop us a line.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="core">
+                                <i class="icon-lightbulb-o to-animate-2"></i>
+                                <div class="fh5co-post to-animate">
+                                    <h3>Free Staff</h3>
+                                    <p>Most of the offers are free, however as we need to keep the business floating, we'll be sending marketing letters as well.</p>
+                                </div>
+                            </div>
+                            <div class="core">
+                                <i class="icon-trophy to-animate-2"></i>
+                                <div class="fh5co-post to-animate">
+                                    <h3>Top Partners</h3>
+                                    <p>We only work with the trusted partners and offer providers to make sure our subscribers only get the best and reliable deals.</p>
+                                </div>
+                            </div>
+                            <div class="core">
+                                <i class="icon-columns2 to-animate-2"></i>
+                                <div class="fh5co-post to-animate">
+                                    <h3>Up-to-Date</h3>
+                                    <p>Relaxst.com tends not to bother our subscribers every day. That is why we only tend to send email campaigns 2-3 times a week.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="fh5co-explore" data-section="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center">
+                    <h2 class="to-animate"><span>Only some of the staff we'll introduce you to</span></h2>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                            <h3>Below is only some of the cool staff you will be able to find in our email campaigns. Subscribe and do not miss out</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fh5co-project">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="project-grid to-animate-2 imgprogone">
+                            <div class="desc">
+                                <h3><a href="{{ path('index') }}">Get the best of the games</a></h3>
+                                <span>I like to play</span>
+                                <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="project-grid to-animate-2 imgprogtwo">
+                                    <div class="desc">
+                                        <h3><a href="{{ path('index') }}">Sports Betting</a></h3>
+                                        <span>Best of live sports</span>
+                                        <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="project-grid to-animate-2 imgprogthree">
+                                    <div class="desc">
+                                        <h3><a href="{{ path('index') }}">Entertainment news & more</a></h3>
+                                        <span>Never miss a news any more</span>
+                                        <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <div class="project-grid to-animate-2 imgprogfive">
+                            <div class="desc">
+                                <h3><a href="{{ path('index') }}">Vertual Reality</a></h3>
+                                <span>The world is out there</span>
+                                <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                            </div>
+                        </div>
+                        <div class="project-grid to-animate-2 imgprogsix">
+                            <div class="desc">
+                                <h3><a href="{{ path('index') }}">Best of Tunes</a></h3>
+                                <span>Latest Tunes of your favourite items</span>
+                                <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="project-grid to-animate-2 imgprognine">
+                                    <div class="desc">
+                                        <h3><a href="{{ path('index') }}">Technology news</a></h3>
+                                        <span>Be the first one to know about technology breakthroughs</span>
+                                        <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="project-grid to-animate-2 imgprogten">
+                                    <div class="desc">
+                                        <h3><a href="{{ path('index') }}">Fashion Staff</a></h3>
+                                        <span>Follow latest trends in fashion</span>
+                                        <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-grid to-animate-2 imgprogelev">
+                            <div class="desc">
+                                <h3><a href="{{ path('index') }}">Latest of mobile industry</a></h3>
+                                <span>Mobile apps, latest hardware and much more in our marketing campaigns.</span>
+                                <p class="love"><a href="{{ path('index') }}"><i class="icon-heart-o"></i> Subscribe </a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+        <div id="fh5co-counter-section" class="fh5co-counters">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate"><span>Some Fun Facts</span></h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext">
+                                <h3 class="to-animate">We like to share some fun and sometimes random facts with out sibscribers, below are some of them. </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row to-animate">
+                    <div class="col-md-3 text-center">
+                        <span class="fh5co-counter js-counter" data-from="0" data-to="3452" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter-label">Cups of Coffee</span>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <span class="fh5co-counter js-counter" data-from="0" data-to="67894033" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter-label">Subscribers</span>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <span class="fh5co-counter js-counter" data-from="0" data-to="6542" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter-label">Campaigns</span>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <span class="fh5co-counter js-counter" data-from="0" data-to="210" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter-label">Partners</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="fh5co-testimony" class="fh5co-bg-color" data-section="testimony">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center">
+                    <h2 class="to-animate"><span>Our Happy Clients</span></h2>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 to-animate">
+                    <div class="wrap-testimony">
+                        <div class="owl-carousel-fullwidth">
+                            <div class="item">
+                                <div class="testimony-slide active text-center">
+                                    <figure>
+                                        <img src="{{ asset('images/person2.jpg') }}" alt="user">
+                                    </figure>
+                                    <span>Vikky K.</span>
+                                    <blockquote>
+                                        <p>&ldquo;These guys are just great. Now i do not need go through tones of online contant. Relaxst.com got me covered. &rdquo;</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-slide active text-center">
+                                    <figure>
+                                        <img src="{{ asset('images/person3.jpg') }}" alt="user">
+                                    </figure>
+                                    <span>Steve M.</span>
+                                    <blockquote>
+                                        <p>&ldquo;Never though email marketing can be so much fun. They've introduced me to virtual reality world. &rdquo;</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-slide active text-center">
+                                    <figure>
+                                        <img src="{{ asset('images/person2.jpg') }}" alt="user">
+                                    </figure>
+                                    <span>John D.</span>
+                                    <blockquote>
+                                        <p>&ldquo;Their email campaigns are not as frequent as i thought they would be. Sometimes i regret about that.&rdquo;</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="getting-started getting-started-1">
+        <div class="getting-grid gridimg">
+            <div class="desc">
+                <h2>Getting <span>Started</span></h2>
+                <p>Not sure if you would like to join exclusive world of Relaxst.com - feel free to sent us a line. Otherwise join us and feel it yourself </p>
+            </div>
+        </div>
+        <a href="{{ path('index') }}" class="getting-grid2">
+            <div class="call-to-action text-center">
+                <p href="{{ path('index') }}" class="sign-up">Sign Up For Free</p>
+            </div>
+        </a>
+    </div>
+                                    
+    <section id="fh5co-team" class="fh5co-bg-color" data-section="team">
+        <div class="fh5co-team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate"><span>Meet The Team</span></h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext">
+                                <h3 class="to-animate">These are the guys that take are taking care of marketing campaigns and much more </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="team-box text-center to-animate-2">
+                            <div class="user"><img class="img-reponsive" src="{{ asset('images/person4.jpg') }}" alt="Roger Garfield"></div>
+                            <h3>Roger Grenwood</h3>
+                            <span class="position">Content Manager</span>
+                            <p>With all confidence we can say that Roger is all about content. He loves to create awesome content and this is what we feel he lives for.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-box text-center to-animate-2">
+                            <div class="user"><img class="img-reponsive" src="{{ asset('images/person2.jpg') }}" alt="Roger Garfield"></div>
+                            <h3>Meg Stevens</h3>
+                            <span class="position">Manager, Business Relations</span>
+                            <p> Meg is handling relations with our partners and external content provider. With this she is adding up a lot of value to our campaigns. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-box text-center to-animate-2">
+                            <div class="user"><img class="img-reponsive" src="{{ asset('images/person3.jpg') }}" alt="Roger Garfield"></div>
+                            <h3>Ross Clarks</h3>
+                            <span class="position">Full Stack Developer</span>
+                            <p>Ross is running out platform on the background to make sure your customers get what they've signed up for.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fh5co-faq" class="fh5co-bg-color" data-section="faq">
+        <div class="fh5co-faq">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate"><span>Common Questions</span></h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext">
+                                <h3 class="to-animate">Everything you need to know before you get started</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box-faq to-animate-2">
+                            <i class="icon-check2"></i>
+                            <div class="desc">
+                                <h3>What is Relaxst.com?</h3>
+                                <p>Relaxst.com is a subscription based e-marketing network, that connects its subscribers from all over the world to latest of intertainment and technology news and ecommerce opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="box-faq to-animate-2">
+                            <i class="icon-check2"></i>
+                            <div class="desc">
+                                <h3>I have technical problem, who do I email? </h3>
+                                <p>You can always reach us by sending and email to support@relaxst.com. Our designated support staff is always ready to assist.</p>
+                            </div>
+                        </div>
+                        <div class="box-faq to-animate-2">
+                            <i class="icon-check2"></i>
+                            <div class="desc">
+                                <h3>How do I leave Relaxst.com?</h3>
+                                <p>You can leave whenever you want as we respect your privacy. All you need to do is to use "Unsubscribe" functionality on our website or in any of our email campaigns.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box-faq to-animate-2">
+                            <i class="icon-check2"></i>
+                            <div class="desc">
+                                <h3>What language are available?</h3>
+                                <p>We are currently supporting subscribers on all international languages, however we do tend to increase linguistic coverage.</p>
+                            </div>
+                        </div>
+                        <div class="box-faq to-animate-2">
+                            <i class="icon-check2"></i>
+                            <div class="desc">
+                                <h3>What do i do if i want to join the club?</h3>
+                                <p>This is just great. We love new members. All you have to do to become part of exclusive club of Relaxst.com is to complete registration process, which is only 3 steps. </p>
+                            </div>
+                        </div>
+                        <div class="box-faq to-animate-2">
+                            <i class="icon-check2"></i>
+                            <div class="desc">
+                                <h3>Is Relaxst.com free?</h3>
+                                <p>Subscription and unsubscription process are free and always will be. We believe all the best things in this life are free. This is not related to the content of our email campaigns.
+                                Most of the staff there is free, however some of the staff is paid for to keep us aloat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

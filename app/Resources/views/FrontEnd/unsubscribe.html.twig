@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <header role="banner" id="fh5co-header">
+        <div class="fluid-container">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <!-- Mobile Toggle Menu Button -->
+                    <a href="{{ path('index') }}" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                    <a class="navbar-brand" href="{{ path('index') }}">Twist</a> 
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="external" href="{{ path('index') }}#fh5co-home" data-nav-section="home"><span>Home</span></a></li>
+                        <li><a class="external" href="{{ path('index') }}#fh5co-services" data-nav-section="services"><span>Services</span></a></li>
+                        <li><a class="external" href="{{ path('index') }}#fh5co-explore" data-nav-section="explore"><span>Project</span></a></li>
+                        <li><a class="external" href="{{ path('index') }}#fh5co-testimony" data-nav-section="testimony"><span>Testimony</span></a></li>
+                        <li><a class="external" href="{{ path('terms') }}" data-nav-section="fh5co-home"><span>Terms of Use</span></a></li>
+                        <li class="active"><a class="external" href="{{ path('privacy') }}" data-nav-section="fh5co-home"><span>Privacy Policy</span></a></li>
+                        <li><a class="external" href="{{ path('index') }}#fh5co-faq" data-nav-section="faq"><span>FAQ</span></a></li>
+                        <li><a class="external" href="{{ path('unsubscribe') }}"><span>Unsubscribe</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id="fh5co-home" class="imageonet" data-section="home" data-stellar-background-ratio="0.5">
+        <div class="gradient"></div>
+        <div class="container">
+            <div class="text-wrap">
+                <div class="text-inner">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <h1 class="to-animate">Thanks alot for joining our premium subscription network.</h1>
+                            <div class="subscribe-form" style="text-align:center; padding-top:5%;">
+                                <div class= "row">
+                                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                    <div class="input-group margin-bottom-sm col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 text-center margin-f">
+                                        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                                            {{ form_label(form.emailaddress) }}
+                                            {{ form_widget(form.emailaddress) }}
+                                    </div>
+                                    <div style="padding-top:1%; padding-bottom:8%;">
+                                            {{ form_row(form.submit, { 'label': 'Unsubscribe' }) }}
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                            <h2 class="to-animate">An email was sent to an address, indicated during the previous step. 
+                                Please make sure to go and confirm your desire to subscribe by clicking on the link in the email.<br> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
