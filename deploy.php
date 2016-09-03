@@ -7,7 +7,7 @@
 require 'recipe/symfony3.php';
 
 // Set configurations
-set('repository', 'https://github.com/IhorKru/realist.com-new.git');
+set('repository', 'https://github.com/IhorKru/relaxst.com.git');
 set('shared_files', ['app/config/parameters.yml']);
 set('shared_dirs', ['app/logs']);
 set('writable_dirs', ['app/cache', 'app/logs']);
