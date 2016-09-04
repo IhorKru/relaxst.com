@@ -79,7 +79,6 @@ class FrontEndController extends Controller
                     $em->persist($newSubscriber);
                     $em->persist($newOptInDetails);
                     $em->flush();
-                    
                 } else {
                     $userid = $exsSubscriber ->getId();
                     $newOptInDetails = $em ->getRepository('AppBundle:SubscriberOptInDetails') ->findOneBy(['user' => $userid, 'resourceid' => 9]);

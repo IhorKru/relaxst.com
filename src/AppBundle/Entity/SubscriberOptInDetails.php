@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SubscriberOptInDetails
  *
- * @ORM\Table(name="subscriber_opt_in_details", uniqueConstraints={@ORM\UniqueConstraint(name="subsc_optin_pkey", columns={"id"})} )
+ * @ORM\Table(name="02_SubscriberOptInDetails", uniqueConstraints={@ORM\UniqueConstraint(name="subsc_optin_pkey", columns={"id"})} )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SubscriberOptInDetailsRepository")
  */
 class SubscriberOptInDetails
