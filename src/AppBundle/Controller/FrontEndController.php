@@ -28,6 +28,7 @@ class FrontEndController extends Controller
         $error = 0;
         try{
             $newSubscriber = new SubscriberDetails();
+            $exsSubscriber = new SubscriberDetails();
             $newOptInDetails = new SubscriberOptInDetails();
                 $newSubscriber ->getOptindetails() ->add($newOptInDetails);
                 
@@ -57,9 +58,8 @@ class FrontEndController extends Controller
                 
                 //checking if user is already in database
                 $em = $this ->getDoctrine() ->getManager();
-                $entity = $em->getRepository('AppBundle:SubscriberDetails') ->findOneBy(['emailaddress' => $emailaddress]);
-
-                if(!$entity) {
+                $exsSubscriber = $em->getRepository('AppBundle:SubscriberDetails') ->findOneBy(['emailaddress' => $emailaddress]);
+                if(!$exsSubscriber) {
                     //setting up data
                     $newSubscriber ->setFirstname($firstname);
                     $newSubscriber ->setLastname($lastname);
@@ -75,22 +75,36 @@ class FrontEndController extends Controller
                     $newOptInDetails ->setAgreeterms($agreeterms);
                     $newOptInDetails ->setAgreeemails($agreeemails);
                     $newOptInDetails ->setAgreepartners($agreepartners);
-
                     //pushing to database
                     $em->persist($newSubscriber);
                     $em->persist($newOptInDetails);
                     $em->flush();
                     
                 } else {
-                    $newOptInDetails ->setUser($entity);
-                    $newOptInDetails ->setResourceid(9);
-                    $newOptInDetails ->setAgreeterms($agreeterms);
-                    $newOptInDetails ->setAgreeemails($agreeemails);
-                    $newOptInDetails ->setAgreepartners($agreepartners);
-
-                    //pushing to database
-                    $em->persist($newOptInDetails);
-                    $em->flush($newOptInDetails);
+                    $userid = $exsSubscriber ->getId();
+                    $newOptInDetails = $em ->getRepository('AppBundle:SubscriberOptInDetails') ->findOneBy(['user' => $userid, 'resourceid' => 9]);
+                    if(!$newOptInDetails) {
+                        $newOptInDetails ->setUser($entity);
+                        $newOptInDetails ->setResourceid(9);
+                        $newOptInDetails ->setAgreeterms($agreeterms);
+                        $newOptInDetails ->setAgreeemails($agreeemails);
+                        $newOptInDetails ->setAgreepartners($agreepartners);
+                        //pushing to database
+                        $em->persist($newOptInDetails);
+                        $em->flush($newOptInDetails);
+                    } else {
+                        $newContact = new Contact();
+                        $form2 = $this->createForm(ContactType::class, $newContact, [
+                            'action' => $this -> generateUrl('index'),
+                            'method' => 'POST'
+                        ]);
+                        return $this->render('FrontEnd/userexists.html.twig',[
+                            'form2'=>$form2->createView(),
+                            'name' => $newSubscriber->getFirstname(),
+                            'lastname' => $newSubscriber->getLastname(),
+                            'email' => $newSubscriber->getEmailAddress()
+                        ]);
+                    }
                 }
                 
                 //create email
@@ -179,7 +193,7 @@ class FrontEndController extends Controller
         if(!$newOptInDetails) {
             throw $this->createNotFoundException('U bettr go awai!');
         } else {
-            $newOptInDetails = $em ->getRepository('AppBundle:SubscriberOptInDetails') ->findOneBy(['user' => $userid, 'resourceid' => 3]);
+            $newOptInDetails = $em ->getRepository('AppBundle:SubscriberOptInDetails') ->findOneBy(['user' => $userid, 'resourceid' => 9]);
             $newOptInDetails ->setOptindate(new DateTime());
             $newOptInDetails ->setOptinip($_SERVER['REMOTE_ADDR']);
             $em->persist($newOptInDetails);
@@ -247,7 +261,7 @@ class FrontEndController extends Controller
         } else {
             $newOptOutDetails ->setEmailAddress($emailaddress);
             $newOptOutDetails ->setUser($subscriber);
-            $newOptOutDetails ->setResourceid(3);
+            $newOptOutDetails ->setResourceid(9);
             $newOptOutDetails ->setOptoutdate(new DateTime());
             $newOptOutDetails ->setOptoutip($_SERVER['REMOTE_ADDR']);
             $em->persist($newOptOutDetails);        
