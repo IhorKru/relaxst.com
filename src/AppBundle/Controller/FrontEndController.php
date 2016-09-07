@@ -61,6 +61,8 @@ class FrontEndController extends Controller
                 $exsSubscriber = $em->getRepository('AppBundle:SubscriberDetails') ->findOneBy(['emailaddress' => $emailaddress]);
                 if(!$exsSubscriber) {
                     //setting up data
+                    $query = $em ->createQuery('SELECT MAX(s.id) FROM AppBundle:SubscriberDetails s');
+                    $newSubscriber ->setId($query->getSingleScalarResult() + 1);
                     $newSubscriber ->setFirstname($firstname);
                     $newSubscriber ->setLastname($lastname);
                     $newSubscriber ->setEmailAddress($emailaddress);
