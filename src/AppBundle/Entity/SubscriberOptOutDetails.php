@@ -19,7 +19,7 @@ class SubscriberOptOutDetails
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * 
      */
     private $id;
 
@@ -63,7 +63,21 @@ class SubscriberOptOutDetails
      */
     private $optoutip;
 
+    
+     /**
+     * Set id
+     *
+     * @param integer id
+     *
+     * @return SubscriberOptOutDetails
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
 
+        return $this;
+    }
+    
     /**
      * Get id
      *

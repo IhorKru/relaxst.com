@@ -72,6 +72,8 @@ class FrontEndController extends Controller
                     $newSubscriber ->setEducationLevelId(-1);
                     $newSubscriber ->setHash($hash);
                     $newSubscriber ->setSourceid(1);
+                    $query1 = $em ->createQuery('SELECT MAX(t.id) FROM AppBundle:SubscriberOptIndetails t');
+                    $newOptInDetails ->setId($query1->getSingleScalarResult() + 1);
                     $newOptInDetails ->setUser($newSubscriber);
                     $newOptInDetails ->setResourceid(9);
                     $newOptInDetails ->setAgreeterms($agreeterms);
@@ -85,6 +87,8 @@ class FrontEndController extends Controller
                     $userid = $exsSubscriber ->getId();
                     $newOptInDetails = $em ->getRepository('AppBundle:SubscriberOptInDetails') ->findOneBy(['user' => $userid, 'resourceid' => 9]);
                     if(!$newOptInDetails) {
+                        $query2 = $em ->createQuery('SELECT MAX(t.id) FROM AppBundle:SubscriberOptIndetails t');
+                        $newOptInDetails ->setId($query2->getSingleScalarResult() + 1);
                         $newOptInDetails ->setUser($entity);
                         $newOptInDetails ->setResourceid(9);
                         $newOptInDetails ->setAgreeterms($agreeterms);
@@ -260,6 +264,8 @@ class FrontEndController extends Controller
         if(!$subscriber) {
             throw $this->createNotFoundException('U bettr go awai!');
         } else {
+            $query3 = $em ->createQuery('SELECT MAX(u.id) FROM AppBundle:SubscriberOptOutdetails u');
+            $newOptOutDetails ->setId($query3->getSingleScalarResult() + 1);
             $newOptOutDetails ->setEmailAddress($emailaddress);
             $newOptOutDetails ->setUser($subscriber);
             $newOptOutDetails ->setResourceid(9);
